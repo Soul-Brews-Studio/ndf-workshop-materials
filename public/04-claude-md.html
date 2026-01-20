@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part 4: CLAUDE.md & Short Codes</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/reset.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/reveal.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/theme/black.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --r-heading-color: #00d9ff;
+            --r-background-color: #0d1117;
+        }
+        .reveal {
+            font-family: 'Sarabun', 'Inter', sans-serif;
+        }
+        .reveal h1, .reveal h2, .reveal h3 {
+            font-family: 'Inter', 'Sarabun', sans-serif;
+            color: var(--r-heading-color);
+        }
+        .highlight-cyan { color: #00d9ff; }
+        .highlight-green { color: #00ff9f; }
+        .highlight-yellow { color: #ffd93d; }
+        .reveal pre {
+            width: 100%;
+            font-size: 0.55em;
+        }
+        .reveal pre code {
+            padding: 1em;
+            max-height: 500px;
+        }
+        .reveal table {
+            margin: 0 auto;
+        }
+        .reveal table th {
+            color: #00ff9f;
+        }
+        .reveal table td, .reveal table th {
+            border: 1px solid #30363d;
+            padding: 0.5em 1em;
+        }
+        .reveal ul, .reveal ol {
+            display: block;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h1>Part 4: CLAUDE.md & Short Codes</h1>
+                <h2>Teaching Your AI</h2>
+            </section>
+
+            <section>
+                <h2>What is CLAUDE.md?</h2>
+                <p>A file at your repo root that Claude reads automatically.</p>
+                <pre><code>your-repo/
+├── CLAUDE.md     <-- Claude reads this
+├── src/
+└── ψ/</code></pre>
+                <p>Your AI's <strong>instruction manual</strong>.</p>
+            </section>
+
+            <section>
+                <h2>CLAUDE.md Structure</h2>
+                <pre><code class="language-markdown"># Project Name - AI Guide
+
+## Golden Rules
+(Things AI must NEVER do)
+
+## Workflows
+(How to do common tasks)
+
+## Tools
+(What tools to use)
+
+## Patterns
+(Project-specific patterns)</code></pre>
+            </section>
+
+            <section>
+                <h2>Golden Rules Example</h2>
+                <pre><code class="language-markdown">## Golden Rules
+
+1. NEVER use `--force` flags
+2. NEVER push to main directly
+3. NEVER merge PRs without approval
+4. NEVER create temp files outside repo
+5. NEVER use `git commit --amend`
+6. Consult Oracle before debugging</code></pre>
+                <p>Rules AI must follow. Non-negotiable.</p>
+            </section>
+
+            <section>
+                <h2>Workflows Example</h2>
+                <pre><code class="language-markdown">## Commit Workflow
+
+1. Stage changes: `git add -A`
+2. Check diff: `git diff --staged`
+3. Write message: Focus on WHY not WHAT
+4. Commit: `git commit -m "type: message"`
+5. Push: `git push origin branch-name`
+
+Never skip step 2!</code></pre>
+            </section>
+
+            <section>
+                <h2>Short Codes</h2>
+                <p>Quick commands for common tasks.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Code</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>rrr</code></td>
+                            <td>Create retrospective</td>
+                        </tr>
+                        <tr>
+                            <td><code>/recap</code></td>
+                            <td>Get session summary</td>
+                        </tr>
+                        <tr>
+                            <td><code>/snapshot</code></td>
+                            <td>Quick knowledge capture</td>
+                        </tr>
+                        <tr>
+                            <td><code>/distill</code></td>
+                            <td>Extract patterns</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section>
+                <h2>The <code>rrr</code> Command</h2>
+                <p>Creates session retrospective.</p>
+                <pre><code class="language-markdown"># Session Retrospective
+
+## AI Diary (Vulnerable Section)
+What I struggled with, what surprised me...
+
+## Work Done
+- Task 1: completed
+- Task 2: completed
+
+## Learnings
+- Pattern discovered: X</code></pre>
+            </section>
+
+            <section>
+                <h2><code>/recap</code> Command</h2>
+                <p>Fresh start context summary.</p>
+                <p>Used when:</p>
+                <ul>
+                    <li>Starting new session</li>
+                    <li>Context is confused</li>
+                    <li>After <code>/jump</code> to new topic</li>
+                </ul>
+                <pre><code>User: /recap
+Claude: *reads recent retros, handoffs*
+Claude: "Last session you were working on..."</code></pre>
+            </section>
+
+            <section>
+                <h2><code>/snapshot</code> Command</h2>
+                <p>Quick capture of current state.</p>
+                <pre><code>User: /snapshot "Figured out the bug"
+Claude: *creates timestamped file*</code></pre>
+                <p>Creates: <code>ψ/memory/logs/snapshots/2025-01-19_1430_figured-out-bug.md</code></p>
+            </section>
+
+            <section>
+                <h2>Modular CLAUDE.md</h2>
+                <p>For large projects, split into files:</p>
+                <pre><code>CLAUDE.md           ← Main hub (lean)
+CLAUDE_safety.md    ← Safety rules
+CLAUDE_workflows.md ← Workflows
+CLAUDE_subagents.md ← Agent docs
+CLAUDE_lessons.md   ← Patterns</code></pre>
+                <p>CLAUDE.md just links to others.</p>
+            </section>
+
+            <section>
+                <h2>Skills Directory</h2>
+                <p>Reusable instructions in <code>~/.claude/skills/</code></p>
+                <pre><code>~/.claude/skills/
+├── rrr/
+│   └── SKILL.md
+├── recap/
+│   └── SKILL.md
+└── snapshot/
+    └── SKILL.md</code></pre>
+                <p>Skills loaded on-demand. Saves context.</p>
+            </section>
+
+            <section>
+                <h2>End of Part 4</h2>
+                <p>Next: Birth Announcement</p>
+                <p>When does Oracle truly come alive?</p>
+            </section>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/reveal.min.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            transition: 'none',
+            controls: true,
+            progress: true
+        });
+    </script>
+</body>
+</html>

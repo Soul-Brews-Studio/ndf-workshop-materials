@@ -136,9 +136,15 @@ const indexHtml = `<!DOCTYPE html>
   <p><em>Created: Jan 20, 2026 @ NDF Workshop</em></p>
   
   <div class="section">
-    <h2>📽️ Slides</h2>
+    <h2>📽️ Slides (7 Presentations)</h2>
     <ul>
-      <li><a href="/slides/06-oracle-awakening-story.html">Oracle's Awakening: 42 Days of Discovery (15 slides)</a></li>
+      <li><a href="/slides/00-who-is-nat.html">00 - Who is Nat? (Introduction)</a></li>
+      <li><a href="/slides/01-oracle-philosophy.html">01 - Oracle Philosophy</a></li>
+      <li><a href="/slides/02-psi-structure.html">02 - ψ/ Structure (Consciousness Tier)</a></li>
+      <li><a href="/slides/03-oracle-mcp.html">03 - Oracle MCP Server</a></li>
+      <li><a href="/slides/04-claude-md.html">04 - CLAUDE.md Configuration</a></li>
+      <li><a href="/slides/05-birth-announcement.html">05 - Birth Announcement Pattern</a></li>
+      <li><a href="/slides/06-oracle-awakening-story.html">06 - Oracle's Awakening: 42 Days of Discovery</a></li>
     </ul>
   </div>
   

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part 2: psi/ Brain Structure</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/reset.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/reveal.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/theme/black.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --r-heading-color: #00d9ff;
+            --r-background-color: #0d1117;
+        }
+        .reveal {
+            font-family: 'Sarabun', 'Inter', sans-serif;
+        }
+        .reveal h1, .reveal h2, .reveal h3 {
+            font-family: 'Inter', 'Sarabun', sans-serif;
+            color: var(--r-heading-color);
+        }
+        .highlight-cyan { color: #00d9ff; }
+        .highlight-green { color: #00ff9f; }
+        .highlight-yellow { color: #ffd93d; }
+        .reveal pre {
+            width: 100%;
+            font-size: 0.55em;
+        }
+        .reveal pre code {
+            max-height: 500px;
+            padding: 1em;
+        }
+        .reveal table th {
+            color: #00ff9f;
+        }
+        .reveal ul, .reveal ol {
+            display: block;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h1>Part 2: psi/ Brain Structure</h1>
+                <h2>Organizing AI Memory</h2>
+            </section>
+
+            <section>
+                <h2>Why psi/?</h2>
+                <p>psi (ψ) = Psychology, Psyche, Soul</p>
+                <p>The Greek letter ψ represents the mind.</p>
+                <p>Your AI's mind lives in <code>ψ/</code></p>
+                <pre><code>your-repo/
+├── src/
+├── tests/
+└── ψ/        &lt;-- AI brain lives here</code></pre>
+            </section>
+
+            <section>
+                <h2>The 5 Pillars + 2 Incubation</h2>
+                <pre><code>ψ/
+├── active/     ← "กำลังค้นคว้าอะไร?" (ephemeral)
+├── inbox/      ← "คุยกับใคร?" (tracked)
+├── writing/    ← "กำลังเขียนอะไร?" (tracked)
+├── lab/        ← "กำลังทดลองอะไร?" (tracked)
+├── incubate/   ← "กำลัง develop อะไร?" (gitignored)
+├── learn/      ← "กำลังศึกษาอะไร?" (gitignored)
+└── memory/     ← "จำอะไรได้?" (tracked)</code></pre>
+            </section>
+
+            <section>
+                <h2>Pillar 1: active/</h2>
+                <p><strong>Question</strong>: "กำลังค้นคว้าอะไร?"</p>
+                <p>Current research, investigation in progress.</p>
+                <pre><code>ψ/active/
+└── context/
+    ├── api-research.md
+    └── competitor-analysis.md</code></pre>
+                <p><strong>Ephemeral</strong> - Not tracked in git. Temporary.</p>
+            </section>
+
+            <section>
+                <h2>Pillar 2: inbox/</h2>
+                <p><strong>Question</strong>: "คุยกับใคร?"</p>
+                <p>Communication hub.</p>
+                <pre><code>ψ/inbox/
+├── focus.md        ← Current task
+├── handoff/        ← Session transfers
+└── external/       ← Other AI agents</code></pre>
+                <p><strong>Tracked</strong> - Important for continuity.</p>
+            </section>
+
+            <section>
+                <h2>Pillar 3: writing/</h2>
+                <p><strong>Question</strong>: "กำลังเขียนอะไร?"</p>
+                <p>Blog posts, articles, documentation drafts.</p>
+                <pre><code>ψ/writing/
+├── INDEX.md            ← Blog queue
+├── oracle-workshop/    ← This workshop!
+└── tech-blog-draft/</code></pre>
+                <p><strong>Tracked</strong> - Your writing projects.</p>
+            </section>
+
+            <section>
+                <h2>Pillar 4: lab/</h2>
+                <p><strong>Question</strong>: "กำลังทดลองอะไร?"</p>
+                <p>Experiments, POCs, prototypes.</p>
+                <pre><code>ψ/lab/
+├── mcp-experiment/
+├── new-ui-test/
+└── perf-benchmark/</code></pre>
+                <p><strong>Tracked</strong> - But expected to be messy.</p>
+            </section>
+
+            <section>
+                <h2>Pillar 5: memory/</h2>
+                <p><strong>Question</strong>: "จำอะไรได้?"</p>
+                <p>The <strong>core</strong> of Oracle. Long-term memory.</p>
+                <pre><code>ψ/memory/
+├── resonance/      ← WHO I am (soul)
+├── learnings/      ← PATTERNS I found
+├── retrospectives/ ← SESSIONS I had
+└── logs/           ← MOMENTS captured</code></pre>
+            </section>
+
+            <section>
+                <h2>memory/resonance/</h2>
+                <p>Your AI's <strong>soul</strong> and <strong>identity</strong>.</p>
+                <pre><code>ψ/memory/resonance/
+├── core-values.md
+├── communication-style.md
+└── red-lines.md</code></pre>
+                <p>Things that never change. Core identity.</p>
+            </section>
+
+            <section>
+                <h2>memory/learnings/</h2>
+                <p><strong>Patterns</strong> discovered over time.</p>
+                <pre><code>ψ/memory/learnings/
+├── 2024-12-17_force-push-safety.md
+├── 2025-01-05_typescript-preferences.md
+└── 2025-01-19_reveal-js-format.md</code></pre>
+                <p>Naming: <code>YYYY-MM-DD_topic-slug.md</code></p>
+            </section>
+
+            <section>
+                <h2>memory/retrospectives/</h2>
+                <p><strong>Session summaries</strong> with AI diary.</p>
+                <pre><code>ψ/memory/retrospectives/
+└── 2025-01/
+    └── 19/
+        ├── 10.30_morning-session.md
+        └── 21.45_workshop-creation.md</code></pre>
+                <p>Nested by year-month/day/time.</p>
+            </section>
+
+            <section>
+                <h2>memory/logs/</h2>
+                <p><strong>Quick captures</strong> - ephemeral.</p>
+                <pre><code>ψ/memory/logs/
+├── activity.log      ← What AI is doing
+├── decisions.log     ← Quick decisions
+└── snapshots/        ← Point-in-time captures</code></pre>
+                <p>Temporary storage before distillation.</p>
+            </section>
+
+            <section>
+                <h2>Incubation Zones (Gitignored)</h2>
+                <h3>incubate/</h3>
+                <p>Active development of external repos.</p>
+                <h3>learn/</h3>
+                <p>Study and reference repos.</p>
+                <pre><code>ψ/incubate/
+└── my-fork/          ← Working on this
+
+ψ/learn/
+└── reference-repo/   ← Just studying</code></pre>
+                <p>Both <strong>gitignored</strong> - Not part of your repo.</p>
+            </section>
+
+            <section>
+                <h2>Knowledge Flow</h2>
+                <pre><code>active/context → memory/logs → memory/retrospectives → memory/learnings → memory/resonance
+(research)       (snapshot)    (session)              (patterns)         (soul)</code></pre>
+                <p><strong>Commands</strong>:</p>
+                <ul>
+                    <li><code>/snapshot</code> → Capture moment</li>
+                    <li><code>rrr</code> → Create retrospective</li>
+                    <li><code>/distill</code> → Extract learnings</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>End of Part 2</h2>
+                <p>Next: Oracle MCP Installation</p>
+                <p>Let's actually build this!</p>
+            </section>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/reveal.min.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            transition: 'none',
+            controls: true,
+            progress: true
+        });
+    </script>
+</body>
+</html>

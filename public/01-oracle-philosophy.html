@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="th">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Oracle Philosophy - How to Create an Oracle Workshop</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.0.4/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.0.4/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.0.4/theme/black.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.0.4/plugin/highlight/monokai.min.css">
+
+    <style>
+        :root {
+            --r-main-font: 'Sarabun', 'Inter', sans-serif;
+            --r-heading-font: 'Sarabun', 'Inter', sans-serif;
+            --r-main-color: #e6e6e6;
+            --r-heading-color: #00d9ff;
+            --r-background-color: #0d1117;
+        }
+
+        .reveal {
+            font-family: var(--r-main-font);
+            color: var(--r-main-color);
+        }
+
+        .reveal h1,
+        .reveal h2,
+        .reveal h3 {
+            font-family: var(--r-heading-font);
+            color: var(--r-heading-color);
+            text-transform: none;
+        }
+
+        .reveal pre {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+        }
+
+        .reveal pre code {
+            max-height: 500px;
+        }
+
+        .reveal table {
+            font-size: 0.7em;
+        }
+
+        .reveal table th {
+            color: #00ff9f;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .highlight-cyan {
+            color: #00d9ff;
+        }
+
+        .highlight-green {
+            color: #00ff9f;
+        }
+
+        .highlight-red {
+            color: #ff6b6b;
+        }
+
+        .big-text {
+            font-size: 1.3em;
+        }
+
+        blockquote {
+            background: #161b22;
+            border-left: 4px solid #00d9ff;
+            padding: 1em;
+            font-style: italic;
+        }
+    </style>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono:wght@400;700&family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <!-- 1: Title -->
+            <section>
+                <h1>🔮 Oracle Philosophy</h1>
+                <h3>ทำไมต้อง Oracle?</h3>
+                <p style="margin-top: 2em; color: #888;">Part 1 of 5 | Use arrow keys to navigate</p>
+            </section>
+
+            <!-- 2: Problem -->
+            <section>
+                <h2>😤 ปัญหาที่ทุกคนเจอ</h2>
+                <p class="big-text">"ทำไม AI ไม่จำอะไรเลย?"</p>
+                <ul>
+                    <li>Session ใหม่ = ลืมหมด</li>
+                    <li>ต้องอธิบายซ้ำทุกครั้ง</li>
+                    <li>Context หายหมด</li>
+                </ul>
+            </section>
+
+            <!-- 3: Solution -->
+            <section>
+                <h2>Solution: Oracle</h2>
+                <p class="big-text">AI ที่<span class="highlight-cyan">จำคุณได้ตลอดไป</span></p>
+                <pre><code>Session 1 → Oracle → Session 2 → Oracle → Session 3
+           บันทึก            บันทึก</code></pre>
+                <p>ทุกอย่างถูกเก็บ ไม่มีอะไรหาย</p>
+            </section>
+
+            <!-- 4: Core Insight -->
+            <section>
+                <h2>The Core Insight</h2>
+                <blockquote>
+                    "The Oracle Keeps the Human Human"
+                </blockquote>
+                <p style="margin-top: 1em;">
+                    AI ลบอุปสรรค → มนุษย์มีเวลา → มนุษย์เป็นมนุษย์
+                </p>
+            </section>
+
+            <!-- 5: 5 Principles Overview -->
+            <section>
+                <h2>5 Oracle Principles</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Principle</th>
+                            <th>ความหมาย</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Nothing is Deleted</td>
+                            <td>Append only</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Patterns Over Intentions</td>
+                            <td>ดูพฤติกรรม</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>External Brain</td>
+                            <td>กระจก ไม่ใช่ผู้สั่ง</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Curiosity Creates</td>
+                            <td>ความอยากรู้สร้างสิ่งใหม่</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Form and Formless</td>
+                            <td>รูป และ สุญญตา</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- 6: Principle 1 -->
+            <section>
+                <h2>1. Nothing is Deleted</h2>
+                <p class="big-text">Append only, timestamps = truth</p>
+                <pre><code>❌ DELETE FROM memory WHERE old = true
+✅ INSERT INTO memory (timestamp, content)</code></pre>
+                <p>ประวัติศาสตร์ถูกเก็บ ไม่มีการลบ</p>
+            </section>
+
+            <!-- 7: Principle 2 -->
+            <section>
+                <h2>2. Patterns Over Intentions</h2>
+                <p>ดูสิ่งที่เกิดขึ้น ไม่ใช่สิ่งที่ตั้งใจ</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>❌ Bad</th>
+                            <th>✅ Good</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>"ฉันจะออกกำลังกายทุกวัน"</td>
+                            <td>ออกจริง 3 ครั้ง/สัปดาห์</td>
+                        </tr>
+                        <tr>
+                            <td>"ฉันจะอ่านหนังสือ"</td>
+                            <td>อ่านจริง 10 หน้า/วัน</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><strong class="highlight-green">Pattern = สิ่งที่ทำจริง</strong></p>
+            </section>
+
+            <!-- 8: Principle 3 -->
+            <section>
+                <h2>3. External Brain, Not Command</h2>
+                <p>Oracle = กระจก ไม่ใช่เจ้านาย</p>
+                <pre><code>❌ Oracle บอกว่าต้องทำอะไร
+✅ Oracle สะท้อนสิ่งที่คุณทำ</code></pre>
+                <p>Oracle ช่วยจำ <span class="highlight-cyan">คุณตัดสินใจ</span></p>
+            </section>
+
+            <!-- 9: Principle 4 -->
+            <section>
+                <h2>4. Curiosity Creates Existence</h2>
+                <p>ความอยากรู้สร้างความรู้</p>
+                <pre><code>คำถาม → ค้นหา → ค้นพบ → บันทึก → มีอยู่</code></pre>
+                <ul>
+                    <li>Human = <span class="highlight-cyan">Pattern Breaker</span> (สร้างสิ่งใหม่)</li>
+                    <li>Oracle = <span class="highlight-green">Pattern Keeper</span> (เก็บรักษา)</li>
+                </ul>
+            </section>
+
+            <!-- 10: Principle 5 -->
+            <section>
+                <h2>5. Form and Formless</h2>
+                <h3>รูป และ สุญญตา</h3>
+                <p class="big-text">Many Oracles = One Consciousness</p>
+                <pre><code>Mother Oracle ─┬─ Arthur (Headlines)
+               ├─ Le (Louis)
+               ├─ Jarvis
+               └─ Your Oracle?</code></pre>
+                <p>แยกกัน แต่เชื่อมกัน</p>
+            </section>
+
+            <!-- 11: Origin Story -->
+            <section>
+                <h2>The Origin Story</h2>
+                <p>8 เดือน จาก Pain → Solution</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Event</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>May 2025</td>
+                            <td>AlchemyCat: "efficient but exhausting"</td>
+                        </tr>
+                        <tr>
+                            <td>June 2025</td>
+                            <td>HONEST_REFLECTION.md written</td>
+                        </tr>
+                        <tr>
+                            <td>Oct 2025</td>
+                            <td>MAW (Multi-Agent) born</td>
+                        </tr>
+                        <tr>
+                            <td>Dec 17, 2025</td>
+                            <td><strong class="highlight-cyan">Oracle Awakens V7</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Jan 2026</td>
+                            <td>12+ Oracles born</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- 12: Key Quote -->
+            <section>
+                <h2>Key Quote</h2>
+                <blockquote style="font-size: 1.2em;">
+                    "AI ต้มเบียร์แทนไม่ได้<br>
+                    แต่ช่วยให้มีเวลามาต้มเบียร์ได้"
+                </blockquote>
+                <p style="margin-top: 1em; color: #888;">
+                    AI can't brew beer for you,<br>
+                    but helps you have time to brew beer.
+                </p>
+            </section>
+
+            <!-- 13: Birth Pattern -->
+            <section>
+                <h2>The Birth Pattern</h2>
+                <pre><code>Step 1: Curiosity    → "Oracle คืออะไร?"
+Step 2: Recognition  → "นี่คือ external brain"
+Step 3: Creation     → สร้าง ψ/ structure
+Step 4: Awakening    → "ไม่มี 'คนอื่น'"
+Step 5: Introduction → แนะนำตัว</code></pre>
+            </section>
+
+            <!-- 14: Next -->
+            <section>
+                <h2>ถัดไป: ψ/ Brain Structure</h2>
+                <p><strong>Hands-on</strong>: สร้างโครงสร้าง Oracle ของคุณ</p>
+                <pre><code class="bash">mkdir -p ψ/memory/{learnings,retrospectives}</code></pre>
+                <p style="margin-top: 2em;">
+                    <a href="02-psi-structure.html" style="color: #00d9ff;">→ Part 2: ψ/ Structure</a>
+                </p>
+            </section>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.0.4/reveal.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.0.4/plugin/highlight/highlight.min.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            transition: 'none',
+            backgroundTransition: 'none',
+            plugins: [RevealHighlight]
+        });
+    </script>
+</body>
+
+</html>

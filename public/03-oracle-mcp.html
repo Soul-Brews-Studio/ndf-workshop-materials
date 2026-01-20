@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part 3: Oracle MCP Installation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/reset.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/reveal.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/theme/black.min.css">
+    <style>
+        :root {
+            --r-heading-color: #00d9ff;
+            --r-background-color: #0d1117;
+        }
+        .reveal {
+            font-family: 'Sarabun', 'Inter', sans-serif;
+        }
+        .reveal h1, .reveal h2, .reveal h3 {
+            font-family: 'Inter', 'Sarabun', sans-serif;
+            color: var(--r-heading-color);
+        }
+        .highlight-cyan { color: #00d9ff; }
+        .highlight-green { color: #00ff9f; }
+        .highlight-yellow { color: #ffd93d; }
+        .reveal pre {
+            width: 100%;
+            font-size: 0.55em;
+        }
+        .reveal pre code {
+            max-height: 500px;
+            padding: 1em;
+        }
+        .reveal table {
+            margin: 0 auto;
+        }
+        .reveal table th {
+            color: #00ff9f;
+        }
+        .reveal table td, .reveal table th {
+            border: 1px solid #30363d;
+            padding: 0.5em 1em;
+        }
+        .reveal ul, .reveal ol {
+            display: block;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h1>Part 3: Oracle MCP Installation</h1>
+                <h2>Building Your AI Brain</h2>
+            </section>
+
+            <section>
+                <h2>What is MCP?</h2>
+                <p><strong>Model Context Protocol</strong></p>
+                <p>Standard way for AI to talk to tools.</p>
+                <pre><code>Claude &lt;--MCP--&gt; Oracle
+Claude &lt;--MCP--&gt; GitHub
+Claude &lt;--MCP--&gt; Database</code></pre>
+                <p>Oracle is an MCP server.</p>
+            </section>
+
+            <section>
+                <h2>Architecture Overview</h2>
+                <pre><code>┌─────────────────┐
+│   Claude Code   │
+│   (AI Agent)    │
+└────────┬────────┘
+         │ MCP Protocol
+         ▼
+┌─────────────────┐
+│   Oracle MCP    │
+│   (TypeScript)  │
+├─────────────────┤
+│ SQLite (FTS5)   │  ← Keywords
+│ ChromaDB        │  ← Vectors
+└─────────────────┘</code></pre>
+            </section>
+
+            <section>
+                <h2>Step 1: Create psi/ Structure</h2>
+                <pre><code class="language-bash">mkdir -p ψ/memory/{resonance,learnings,retrospectives,logs}
+mkdir -p ψ/memory/logs/snapshots
+mkdir -p ψ/{active/context,inbox/handoff,writing,lab}
+mkdir -p ψ/{incubate,learn}
+
+# Add to .gitignore
+echo "ψ/active/" >> .gitignore
+echo "ψ/incubate/" >> .gitignore
+echo "ψ/learn/" >> .gitignore</code></pre>
+            </section>
+
+            <section>
+                <h2>Step 2: Install Oracle MCP</h2>
+                <pre><code class="language-bash"># Clone the Oracle MCP server
+git clone https://github.com/laris-co/oracle-mcp.git
+cd oracle-mcp
+
+# Install dependencies
+npm install
+
+# Build
+npm run build
+
+# Initialize database
+npm run init</code></pre>
+            </section>
+
+            <section>
+                <h2>Step 3: Configure Claude</h2>
+                <p>Add to <code>~/.claude/settings.json</code>:</p>
+                <pre><code class="language-json">{
+  "mcpServers": {
+    "oracle": {
+      "command": "node",
+      "args": ["/path/to/oracle-mcp/dist/index.js"],
+      "env": {
+        "ORACLE_DB_PATH": "/path/to/your-repo/ψ/memory/oracle.db",
+        "ORACLE_MEMORY_PATH": "/path/to/your-repo/ψ/memory"
+      }
+    }
+  }
+}</code></pre>
+            </section>
+
+            <section>
+                <h2>Step 4: Test Connection</h2>
+                <pre><code class="language-bash"># Start Claude Code
+claude
+
+# Test Oracle
+> oracle_stats
+# Should show: documents indexed, ChromaDB status</code></pre>
+            </section>
+
+            <section>
+                <h2>Oracle Tools Available</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tool</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>oracle_search</code></td>
+                            <td>Find knowledge</td>
+                        </tr>
+                        <tr>
+                            <td><code>oracle_learn</code></td>
+                            <td>Add new patterns</td>
+                        </tr>
+                        <tr>
+                            <td><code>oracle_consult</code></td>
+                            <td>Get guidance</td>
+                        </tr>
+                        <tr>
+                            <td><code>oracle_reflect</code></td>
+                            <td>Random wisdom</td>
+                        </tr>
+                        <tr>
+                            <td><code>oracle_thread</code></td>
+                            <td>Multi-turn discussion</td>
+                        </tr>
+                        <tr>
+                            <td><code>oracle_trace</code></td>
+                            <td>Log discoveries</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section>
+                <h2>Example: Learning a Pattern</h2>
+                <pre><code class="language-typescript">// When you discover something
+oracle_learn({
+  pattern: "Always use git -C instead of cd for worktrees",
+  concepts: ["git", "worktree", "safety"]
+})</code></pre>
+                <p>Creates: <code>ψ/memory/learnings/2025-01-19_git-c-worktree.md</code></p>
+            </section>
+
+            <section>
+                <h2>Example: Searching</h2>
+                <pre><code class="language-typescript">// Find relevant knowledge
+oracle_search({
+  query: "git force push safety",
+  limit: 5
+})
+
+// Returns matching learnings, patterns, retros</code></pre>
+            </section>
+
+            <section>
+                <h2>Example: Consulting</h2>
+                <pre><code class="language-typescript">// Get guidance on a decision
+oracle_consult({
+  decision: "Should I use Marp or Reveal.js for slides?",
+  context: "Building a workshop with Thai support"
+})
+
+// Returns relevant principles + synthesized guidance</code></pre>
+            </section>
+
+            <section>
+                <h2>Hybrid Search</h2>
+                <p>Oracle uses <strong>two</strong> search methods:</p>
+                <ol>
+                    <li><strong class="highlight-cyan">FTS5</strong> (SQLite) - Keyword matching
+                        <ul>
+                            <li>Fast, exact matches</li>
+                            <li>Good for: specific terms, file names</li>
+                        </ul>
+                    </li>
+                    <li><strong class="highlight-cyan">ChromaDB</strong> - Vector/semantic search
+                        <ul>
+                            <li>Understands meaning</li>
+                            <li>Good for: concepts, similar ideas</li>
+                        </ul>
+                    </li>
+                </ol>
+                <p>Combined = <strong class="highlight-green">Hybrid Search</strong></p>
+            </section>
+
+            <section>
+                <h2>End of Part 3</h2>
+                <p>Next: CLAUDE.md & Short Codes</p>
+                <p>Teaching your AI how to behave.</p>
+            </section>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/reveal.min.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            transition: 'none',
+            controls: true,
+            progress: true
+        });
+    </script>
+</body>
+</html>
