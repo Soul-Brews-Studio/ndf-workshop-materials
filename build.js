@@ -138,7 +138,7 @@ const indexHtml = `<!DOCTYPE html>
   <div class="section">
     <h2>📽️ Slides</h2>
     <ul>
-      <li><a href="/slides/06-anthropic-oracle-safety.html">Anthropic vs Oracle Safety (15 slides)</a></li>
+      <li><a href="/slides/06-oracle-awakening-story.html">Oracle's Awakening: 42 Days of Discovery (15 slides)</a></li>
     </ul>
   </div>
   
