@@ -1,0 +1,6 @@
+name = "ndf-workshop"
+compatibility_date = "2024-01-01"
+
+# Static assets
+[assets]
+directory = "./dist"

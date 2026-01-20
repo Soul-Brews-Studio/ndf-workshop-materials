@@ -1,0 +1,10 @@
+{
+  "name": "ndf-workshop",
+  "scripts": {
+    "build": "node build.js",
+    "deploy": "npm run build && wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  }
+}
